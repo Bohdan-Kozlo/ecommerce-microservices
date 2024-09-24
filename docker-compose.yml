@@ -1,0 +1,69 @@
+version: '3.8'
+services:
+  # Product Service Database
+  product-db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: product_user
+      POSTGRES_PASSWORD: product_password
+      POSTGRES_DB: product_catalog_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - product-db-data:/var/lib/postgresql/data
+
+  # Cart Service Database
+  cart-db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: cart_user
+      POSTGRES_PASSWORD: cart_password
+      POSTGRES_DB: cart_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - cart-db-data:/var/lib/postgresql/data
+
+  # Order Service Database
+  order-db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: order_user
+      POSTGRES_PASSWORD: order_password
+      POSTGRES_DB: order_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - order-db-data:/var/lib/postgresql/data
+
+  # User Service Database
+  user-db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user_user
+      POSTGRES_PASSWORD: user_password
+      POSTGRES_DB: user_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - user-db-data:/var/lib/postgresql/data
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - rabbitmq_logs:/var/log/rabbitmq
+
+volumes:
+  product-db-data:
+  cart-db-data:
+  order-db-data:
+  user-db-data:
+  rabbitmq_data:
+  rabbitmq_logs:
