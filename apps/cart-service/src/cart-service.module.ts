@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { CartController } from './cart.controller';
 import { CartService } from './cart.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Cart } from './entitys/cart.entity';
-import { CartItem } from './entitys/cart-item.entity';
+import { Cart } from './entities/cart.entity';
+import { CartItem } from './entities/cart-item.entity';
 import { RmqModule } from '@app/common';
 import { ConfigModule } from '@nestjs/config';
 
@@ -11,8 +11,8 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'cart-db',
-      port: 5432,
+      host: 'localhost',
+      port: 5433,
       username: 'cart_user',
       password: 'cart_password',
       database: 'cart_db',

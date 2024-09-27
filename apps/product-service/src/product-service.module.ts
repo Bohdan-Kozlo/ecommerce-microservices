@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { ProductController } from './product.controller';
 import { ProductService } from './product.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Product } from './entitys/product.entity';
-import { Category } from './entitys/category.entity';
+import { Product } from './entities/product.entity';
+import { Category } from './entities/category.entity';
 import { RmqModule } from '@app/common';
 import { ConfigModule } from '@nestjs/config';
 

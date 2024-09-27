@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import { join } from 'path';
+import { RmqModule } from '@app/common';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { join } from 'path';
         },
       }),
     }),
+    RmqModule,
   ],
   controllers: [NotificationController],
   providers: [NotificationService],
